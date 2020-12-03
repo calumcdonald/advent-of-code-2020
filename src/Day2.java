@@ -10,7 +10,7 @@ public class Day2{
             Scanner sc = new Scanner(dataInp);
             int counter = 0;
             while(sc.hasNextLine()){
-                if(evalLinePart2(sc.nextLine())) {
+                if(new Day2().evalLinePart2(sc.nextLine())) {
                     counter++;
                 }
             }
@@ -22,7 +22,7 @@ public class Day2{
         }
     }
 
-    public static boolean evalLinePart1(String line){
+    public boolean evalLinePart1(String line){
         int min = 0;
         int max = 0;
         char letter = ' ';
@@ -59,7 +59,7 @@ public class Day2{
         return !((lCounter > max) || (lCounter < min));
     }
 
-    public static boolean evalLinePart2(String line){
+    public boolean evalLinePart2(String line){
         int i1 = 0;
         int i2 = 0;
         char letter = ' ';

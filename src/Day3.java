@@ -7,7 +7,7 @@ public class Day3 {
 
     private static ArrayList<String> rows = new ArrayList<>();
 
-    public static int evalLine(String line, int col){
+    public int evalLine(String line, int col){
         if(line.charAt(col) == '#'){
             return 1;
         }
@@ -16,7 +16,7 @@ public class Day3 {
         }
     }
 
-    public static int evalSlope(int colOffset, int rowOffset){
+    public int evalSlope(int colOffset, int rowOffset){
         int col = 0;
         int treeCount = 0;
         String line;
@@ -48,10 +48,11 @@ public class Day3 {
             System.out.println("File not found.");
         }
 
-        System.out.println("Result: " + (evalSlope(1, 1) *
-                evalSlope(3, 1) *
-                evalSlope(5, 1) *
-                evalSlope(7, 1) *
-                evalSlope(1, 2)));
+        Day3 day3 = new Day3();
+        System.out.println("Result: " + (day3.evalSlope(1, 1) *
+                day3.evalSlope(3, 1) *
+                day3.evalSlope(5, 1) *
+                day3.evalSlope(7, 1) *
+                day3.evalSlope(1, 2)));
     }
 }

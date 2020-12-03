@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Day1 {
 
-    static ArrayList<Integer> data = new ArrayList<Integer>();
+    private static ArrayList<Integer> data = new ArrayList<Integer>();
 
     public static void main(String[] args) {
         try {
@@ -19,10 +19,10 @@ public class Day1 {
             System.out.println("File not found.");
         }
 
-        System.out.println("Result: " + calcResult());
+        System.out.println("Result: " + new Day1().calcResult());
     }
 
-    public static int calcResult() {
+    public int calcResult() {
         for(int i = 0; i < data.size(); i++) {
             for(int j = 0; j < data.size(); j++) {
                 for(int k = 0; k < data.size(); k++) {
