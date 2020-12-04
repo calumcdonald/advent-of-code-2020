@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Day4{
+public class Day4_1 {
 
     public int evalPassport(ArrayList<String> passport){
+        int correctCount = 0;
+
         HashMap<String, Boolean> pData = new HashMap<>();
         pData.put("byr", false);
         pData.put("iyr", false);
@@ -36,6 +38,8 @@ public class Day4{
         for(Map.Entry<String, Boolean> e : pData.entrySet()){
             String key = e.getKey();
             Boolean value = e.getValue();
+            System.out.println("Key: " + key);
+            System.out.println("Value: " + value);
 
             if((key.equals("byr")
                     || key.equals("iyr")
@@ -49,12 +53,17 @@ public class Day4{
                 return 0;
             }
             else{
-                System.out.println("+");
-                return 1;
+                correctCount++;
             }
         }
 
-        return 0;
+        if(correctCount >= 7) {
+            System.out.println("+");
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
 
     public static void main(String[] args){
@@ -68,7 +77,7 @@ public class Day4{
                 String line = sc.nextLine();
 
                 if(line.length() == 0){
-                    result += new Day4().evalPassport(passport);
+                    result += new Day4_1().evalPassport(passport);
                     System.out.println("Result: " + result);
                     passport = new ArrayList<>();
                 }
