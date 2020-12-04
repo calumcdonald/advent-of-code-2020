@@ -7,8 +7,6 @@ public class Day4_2{
     public int evalPassport(HashMap<String, String> passport){
         int correctCount = 0;
 
-        System.out.println("~~~");
-        System.out.println(passport);
         for(Map.Entry<String, String> e : passport.entrySet()){
             String key = e.getKey();
             String value = e.getValue();
@@ -19,7 +17,6 @@ public class Day4_2{
                         int num = Integer.parseInt(value);
                         if(num >= 1920 && num <= 2002){
                             correctCount++;
-                            System.out.println(key + ": " + value + " is correct.");
                         }
                     }
                     break;
@@ -28,7 +25,6 @@ public class Day4_2{
                         int num = Integer.parseInt(value);
                         if(num >= 2010 && num <= 2020){
                             correctCount++;
-                            System.out.println(key + ": " + value + " is correct.");
                         }
                     }
                     break;
@@ -37,7 +33,6 @@ public class Day4_2{
                         int num = Integer.parseInt(value);
                         if(num >= 2020 && num <= 2030){
                             correctCount++;
-                            System.out.println(key + ": " + value + " is correct.");
                         }
                     }
                     break;
@@ -48,7 +43,6 @@ public class Day4_2{
 
                         if(num >= 150 && num <= 193){
                             correctCount++;
-                            System.out.println(key + ": " + value + " is correct.");
                         }
                     }
                     else if(value.contains("in")){
@@ -57,7 +51,6 @@ public class Day4_2{
 
                         if(num >= 59 && num <= 76){
                             correctCount++;
-                            System.out.println(key + ": " + value + " is correct.");
                         }
                     }
                     break;
@@ -75,7 +68,6 @@ public class Day4_2{
 
                             if(num == 6) {
                                 correctCount++;
-                                System.out.println(key + ": " + value + " is correct.");
                             }
                         }
                     }
@@ -95,20 +87,17 @@ public class Day4_2{
                     for(String s : colours){
                         if(value.contains(s)){
                             correctCount++;
-                            System.out.println(key + ": " + value + " is correct.");
                         }
                     }
                     break;
                 case("pid"):
                     if(value.length() == 9){
                         correctCount++;
-                        System.out.println(key + ": " + value + " is correct.");
                     }
                     break;
             }
         }
 
-        System.out.println("correctCount: " + correctCount);
         if(correctCount == 7){
             return 1;
         }
@@ -129,7 +118,7 @@ public class Day4_2{
 
                 if(line.length() == 0){
                     result += new Day4_2().evalPassport(passport);
-                    System.out.println("Result: " + result);
+                    passport = new HashMap<>();
                 }
                 else{
                     line = line + " ";
