@@ -17,7 +17,7 @@ public class Day4_2{
                 case("byr"):
                     if(value.length() == 4){
                         int num = Integer.parseInt(value);
-                        if(num > 1920 && num < 2002){
+                        if(num >= 1920 && num <= 2002){
                             correctCount++;
                             System.out.println(key + ": " + value + " is correct.");
                         }
@@ -26,7 +26,7 @@ public class Day4_2{
                 case("iyr"):
                     if(value.length() == 4){
                         int num = Integer.parseInt(value);
-                        if(num > 2010 && num < 2020){
+                        if(num >= 2010 && num <= 2020){
                             correctCount++;
                             System.out.println(key + ": " + value + " is correct.");
                         }
@@ -35,7 +35,7 @@ public class Day4_2{
                 case("eyr"):
                     if(value.length() == 4){
                         int num = Integer.parseInt(value);
-                        if(num > 2020 && num < 2030){
+                        if(num >= 2020 && num <= 2030){
                             correctCount++;
                             System.out.println(key + ": " + value + " is correct.");
                         }
