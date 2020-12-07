@@ -9,12 +9,9 @@ public class Day7{
     private static ArrayList<String> outers = new ArrayList<>();
 
     public int containsShinyGold(ArrayList<String> types){
-        System.out.println("~~~");
-        System.out.println("types: " + types);
         int count = 0;
 
         if(types.contains("shiny gold")){
-            System.out.println("returning 1");
             return 1;
         }
         else if(types.size() == 0){
@@ -26,7 +23,6 @@ public class Day7{
             }
         }
 
-        System.out.println("count: " + count);
         return count;
     }
 
@@ -52,11 +48,11 @@ public class Day7{
             }
 
             for(String outer : outers) {
-                int golds = 0;
+                int golds;
                 ArrayList<String> types = bagsMap.get(outer);
-                golds += new Day7().containsShinyGold(types);
+                golds = new Day7().containsShinyGold(types);
 
-                if(golds > 1){
+                if(golds >= 1){
                     result++;
                 }
             }
