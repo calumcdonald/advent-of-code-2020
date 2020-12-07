@@ -19,7 +19,11 @@ public class Day7_2 {
         else{
             for(String type : types){
                 int num = Integer.parseInt(type.substring(0, 1));
-                count = countBags(bagsMap.get(type.substring(2)));
+                count += countBags(bagsMap.get(type.substring(2)));
+                if(count == 0){
+                    count = num;
+                }
+
                 count *= num;
             }
         }
