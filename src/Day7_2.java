@@ -9,26 +9,14 @@ public class Day7_2 {
     private static ArrayList<String> outers = new ArrayList<>();
 
     public int countBags(ArrayList<String> types){
-        System.out.println("~~~");
-        System.out.println("types: " + types);
         int count = 0;
 
-        if(types.size() == 0){
-            return 0;
-        }
-        else{
-            for(String type : types){
-                int num = Integer.parseInt(type.substring(0, 1));
-                count += countBags(bagsMap.get(type.substring(2)));
-                if(count == 0){
-                    count = num;
-                }
-
-                count *= num;
-            }
+        for(String type : types){
+            int num = Integer.parseInt(type.substring(0, 1));
+            count += num;
+            count += num * countBags(bagsMap.get(type.substring(2)));
         }
 
-        System.out.println("count: " + count);
         return count;
     }
 
