@@ -4,25 +4,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Day7{
+public class Day7_2 {
     private static HashMap<String, ArrayList<String>> bagsMap = new HashMap<>();
     private static ArrayList<String> outers = new ArrayList<>();
 
-    public int containsShinyGold(ArrayList<String> types){
+    public int countBags(ArrayList<String> types){
+        System.out.println("~~~");
+        System.out.println("types: " + types);
         int count = 0;
 
-        if(types.contains("shiny gold")){
-            return 1;
-        }
-        else if(types.size() == 0){
+        if(types.size() == 0){
             return 0;
         }
         else{
             for(String type : types){
-                count += containsShinyGold(bagsMap.get(type));
+                int num = Integer.parseInt(type.substring(0, 1));
+                count = countBags(bagsMap.get(type.substring(2)));
+                count *= num;
             }
         }
 
+        System.out.println("count: " + count);
         return count;
     }
 
@@ -40,22 +42,14 @@ public class Day7{
 
                 for(int i = 0; i < line.length(); i++){
                     if(Character.isDigit(line.charAt(i))){
-                        types.add(line.substring(i + 2, line.indexOf(" bag", i)));
+                        types.add(line.substring(i, line.indexOf(" bag", i)));
                     }
                 }
 
                 bagsMap.put(container, types);
             }
 
-            for(String outer : outers) {
-                int golds;
-                ArrayList<String> types = bagsMap.get(outer);
-                golds = new Day7().containsShinyGold(types);
-
-                if(golds >= 1){
-                    result++;
-                }
-            }
+            result = new Day7_2().countBags(bagsMap.get("shiny gold"));
         }
         catch(FileNotFoundException e) {
             System.out.println("File not found.");
