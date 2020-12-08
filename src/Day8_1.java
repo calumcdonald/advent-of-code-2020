@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class Day8{
+public class Day8_1 {
 
     private static ArrayList<String> instructions = new ArrayList<>();
+    private static HashMap<Integer, Integer> visits = new HashMap<>();
 
     public static void main(String[] args) {
         int acc = 0;
@@ -18,11 +20,25 @@ public class Day8{
                 instructions.add(line);
             }
 
-            for(int i = 0; i < instructions.size(); i++){
-                String inst = instructions.get(i);
+            int step;
+            for(int i = 1; i < instructions.size(); i+=step){
+                step = 1;
+                String inst = instructions.get(i - 1);
                 String op = inst.substring(0, inst.indexOf(' '));
                 String arg = inst.substring(inst.indexOf(' ') + 1);
                 char mod = arg.charAt(0);
+
+                if(!visits.containsKey(i)){
+                    visits.put(i, 1);
+                }
+                else{
+                    visits.put(i, visits.get(i) + 1);
+                }
+
+                if(visits.get(i) == 2){
+                    System.out.println("Result: " + acc);
+                    break;
+                }
 
                 if(op.equals("acc")){
                     if(mod == '+'){
@@ -31,23 +47,19 @@ public class Day8{
                     else if(mod == '-'){
                         acc -= Integer.parseInt(arg.substring(1));
                     }
-                    System.out.println("acc: " + acc);
                 }
                 else if(op.equals("jmp")){
                     if(mod == '+'){
-                        i += Integer.parseInt(arg.substring(1));
+                        step = Integer.parseInt(arg.substring(1));
                     }
                     else if(mod == '-'){
-                        i -= Integer.parseInt(arg.substring(1));
+                        step = -Integer.parseInt(arg.substring(1));
                     }
-                    System.out.println("i: " + i);
                 }
             }
         }
         catch(FileNotFoundException e) {
             System.out.println("File not found.");
         }
-
-        System.out.println("Result: " + 0);
     }
 }
