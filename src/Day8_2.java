@@ -78,8 +78,7 @@ public class Day8_2{
             }
 
             for(int i = 1; i < instructions.size(); i++){
-                ArrayList<String> tempInstructions;
-                tempInstructions = instructions;
+                ArrayList<String> tempInstructions = new ArrayList<>(instructions);
 
                 String inst = instructions.get(i - 1);
                 String op = inst.substring(0, inst.indexOf(' '));
