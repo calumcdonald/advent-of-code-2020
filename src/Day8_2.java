@@ -7,11 +7,68 @@ import java.util.Scanner;
 public class Day8_2{
 
     private static ArrayList<String> instructions = new ArrayList<>();
-    private static HashMap<Integer, Integer> visits = new HashMap<>();
+
+
+    public HashMap<Boolean, Integer> checkChange(ArrayList<String> instructions){
+        int acc = 0;
+        int step;
+        HashMap<Integer, Integer> visits = new HashMap<>();
+        HashMap<Boolean, Integer> result = new HashMap<>();
+
+        for(int i = 1; i < instructions.size(); i+=step){
+            step = 1;
+            String inst = instructions.get(i - 1);
+            String op = inst.substring(0, inst.indexOf(' '));
+            String arg = inst.substring(inst.indexOf(' ') + 1);
+            char mod = arg.charAt(0);
+
+            /*
+            System.out.println("~~~");
+            System.out.println("instruction: " + i);
+            System.out.println("op: " + op);
+            System.out.println("arg: " + arg);
+            System.out.println("mod: " + mod);
+            System.out.println("acc: " + acc);
+             */
+
+            if(!visits.containsKey(i)){
+                visits.put(i, 1);
+            }
+            else{
+                visits.put(i, visits.get(i) + 1);
+            }
+
+            //System.out.println("visits to instruction " + i + ": " + visits.get(i));
+
+            if(visits.get(i) == 2){
+                result.put(false, acc);
+                return result;
+            }
+
+            if(op.equals("acc")){
+                if(mod == '+'){
+                    acc += Integer.parseInt(arg.substring(1));
+                }
+                else if(mod == '-'){
+                    acc -= Integer.parseInt(arg.substring(1));
+                }
+                //System.out.println("accAfter: " + acc);
+            }
+            else if(op.equals("jmp")){
+                if(mod == '+'){
+                    step = Integer.parseInt(arg.substring(1));
+                }
+                else if(mod == '-'){
+                    step = -Integer.parseInt(arg.substring(1));
+                }
+            }
+        }
+
+        result.put(true, acc);
+        return result;
+    }
 
     public static void main(String[] args) {
-        int acc = 0;
-
         try {
             File dataInp = new File("data/day8input.txt");
             Scanner sc = new Scanner(dataInp);
@@ -20,50 +77,29 @@ public class Day8_2{
                 instructions.add(line);
             }
 
-            int step;
-            for(int i = 1; i < instructions.size(); i+=step){
-                step = 1;
+            for(int i = 1; i < instructions.size(); i++){
+                ArrayList<String> tempInstructions;
+                tempInstructions = instructions;
+
                 String inst = instructions.get(i - 1);
                 String op = inst.substring(0, inst.indexOf(' '));
                 String arg = inst.substring(inst.indexOf(' ') + 1);
-                char mod = arg.charAt(0);
 
-                System.out.println("~~~");
-                System.out.println("instruction: " + i);
-                System.out.println("op: " + op);
-                System.out.println("arg: " + arg);
-                System.out.println("mod: " + mod);
-                System.out.println("acc: " + acc);
-
-                if(!visits.containsKey(i)){
-                    visits.put(i, 1);
+                boolean change = false;
+                if(op.equals("jmp")){
+                    tempInstructions.set(i - 1, "nop " + arg);
+                    change = true;
                 }
-                else{
-                    visits.put(i, visits.get(i) + 1);
+                else if(op.equals("nop")){
+                    tempInstructions.set(i - 1, "jmp " + arg);
+                    change = true;
                 }
 
-                System.out.println("visits to instruction " + i + ": " + visits.get(i));
-
-                if(visits.get(i) == 2){
-                    System.out.println("Result: " + acc);
-                    break;
-                }
-
-                if(op.equals("acc")){
-                    if(mod == '+'){
-                        acc += Integer.parseInt(arg.substring(1));
-                    }
-                    else if(mod == '-'){
-                        acc -= Integer.parseInt(arg.substring(1));
-                    }
-                    System.out.println("accAfter: " + acc);
-                }
-                else if(op.equals("jmp")){
-                    if(mod == '+'){
-                        step = Integer.parseInt(arg.substring(1));
-                    }
-                    else if(mod == '-'){
-                        step = -Integer.parseInt(arg.substring(1));
+                if(change) {
+                    HashMap<Boolean, Integer> result;
+                    result = new Day8_2().checkChange(tempInstructions);
+                    if(result.containsKey(true)) {
+                        System.out.println("Result: " + result.get(true));
                     }
                 }
             }
