@@ -27,30 +27,27 @@ public class Day9 {
             if(i + 25 <= data.size() - 1) {
                 preamble = data.subList(i, i + 25);
                 sum = data.get(i + 25);
-
-                System.out.println("preamble " + i + ": " + preamble);
-                System.out.println("sum: " + sum);
             }
-        }
 
-        boolean set = false;
-        for(int i = 0; i < preamble.size(); i++) {
+            boolean set = false;
             for(int j = 0; j < preamble.size(); j++) {
-                long a = Long.parseLong(preamble.get(i));
-                long b = Long.parseLong(preamble.get(j));
-                long c = Long.parseLong(sum);
-                long add = a + b;
+                for(int k = 0; k < preamble.size(); k++) {
+                    long a = Long.parseLong(preamble.get(j));
+                    long b = Long.parseLong(preamble.get(k));
+                    long c = Long.parseLong(sum);
+                    long add = a + b;
 
-                if(add == c) {
-                    System.out.println("added " + a + " + " + b + " to make: " + c);
-                    set = true;
-                    break;
+                    if(add == c) {
+                        set = true;
+                        break;
+                    }
                 }
             }
-        }
 
-        if(!set){
-            System.out.println("Result: " + sum);
+            if(!set){
+                System.out.println("Result: " + sum);
+                break;
+            }
         }
     }
 }
