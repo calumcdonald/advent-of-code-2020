@@ -26,7 +26,6 @@ public class Day8_1 {
                 String inst = instructions.get(i - 1);
                 String op = inst.substring(0, inst.indexOf(' '));
                 String arg = inst.substring(inst.indexOf(' ') + 1);
-                char mod = arg.charAt(0);
 
                 if(!visits.containsKey(i)){
                     visits.put(i, 1);
@@ -41,20 +40,10 @@ public class Day8_1 {
                 }
 
                 if(op.equals("acc")){
-                    if(mod == '+'){
-                        acc += Integer.parseInt(arg.substring(1));
-                    }
-                    else if(mod == '-'){
-                        acc -= Integer.parseInt(arg.substring(1));
-                    }
+                    acc += Integer.parseInt(arg);
                 }
                 else if(op.equals("jmp")){
-                    if(mod == '+'){
-                        step = Integer.parseInt(arg.substring(1));
-                    }
-                    else if(mod == '-'){
-                        step = -Integer.parseInt(arg.substring(1));
-                    }
+                    step = Integer.parseInt(arg);
                 }
             }
         }

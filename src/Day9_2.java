@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Day9_2{
-    //1398413738
 
     public static void main(String[] args) {
         List<String> data = new ArrayList<>();
@@ -22,7 +21,7 @@ public class Day9_2{
             System.out.println("File not found.");
         }
 
-        List<Long> contiguous = new ArrayList<>();
+        List<Long> contiguous;
         long total;
         for(int i = 0; i < data.size(); i++){
             total = 0;

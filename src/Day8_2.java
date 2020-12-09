@@ -20,16 +20,6 @@ public class Day8_2{
             String inst = instructions.get(i - 1);
             String op = inst.substring(0, inst.indexOf(' '));
             String arg = inst.substring(inst.indexOf(' ') + 1);
-            char mod = arg.charAt(0);
-
-            /*
-            System.out.println("~~~");
-            System.out.println("instruction: " + i);
-            System.out.println("op: " + op);
-            System.out.println("arg: " + arg);
-            System.out.println("mod: " + mod);
-            System.out.println("acc: " + acc);
-             */
 
             if(!visits.containsKey(i)){
                 visits.put(i, 1);
@@ -38,29 +28,16 @@ public class Day8_2{
                 visits.put(i, visits.get(i) + 1);
             }
 
-            //System.out.println("visits to instruction " + i + ": " + visits.get(i));
-
             if(visits.get(i) == 2){
                 result.put(false, acc);
                 return result;
             }
 
             if(op.equals("acc")){
-                if(mod == '+'){
-                    acc += Integer.parseInt(arg.substring(1));
-                }
-                else if(mod == '-'){
-                    acc -= Integer.parseInt(arg.substring(1));
-                }
-                //System.out.println("accAfter: " + acc);
+                acc += Integer.parseInt(arg);
             }
             else if(op.equals("jmp")){
-                if(mod == '+'){
-                    step = Integer.parseInt(arg.substring(1));
-                }
-                else if(mod == '-'){
-                    step = -Integer.parseInt(arg.substring(1));
-                }
+                step = Integer.parseInt(arg);
             }
         }
 
