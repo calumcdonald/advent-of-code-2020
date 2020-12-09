@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Day9 {
+public class Day9_1 {
 
     public static void main(String[] args) {
         List<String> data = new ArrayList<>();
