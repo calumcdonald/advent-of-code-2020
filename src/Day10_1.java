@@ -28,11 +28,9 @@ public class Day10_1 {
 
             Collections.sort(adapters);
             device = adapters.get(adapters.size()-1) + 3;
-            System.out.println(adapters);
 
             int diff = adapters.get(0) - outlet;
             new Day10_1().addToMap(diff);
-            System.out.println("Difference between " + outlet + " and " + adapters.get(1) + " is: " + diff);
 
             for(int i = 0; i < adapters.size(); i++){
                 if(i + 1 < adapters.size()){
