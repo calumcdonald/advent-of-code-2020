@@ -23,8 +23,14 @@ public class Day11 {
 
             Board board = new Board(data);
 
-            while(!board.updateBoard()){
+            for(int i = 0; i < 50; i++){
+                boolean result = board.updateBoard();
+                System.out.println("~~~~~~~~~~~~~~~~~~~~");
+                board.printBoard();
 
+                if(result){
+                    break;
+                }
             }
 
             System.out.println("Result: " + board.getOccupiedSeats());
