@@ -2,12 +2,12 @@ package utils;
 
 import java.util.List;
 
-public class Board {
+public class Board_2 {
 
     private Boolean[][] board;
     private int numSeats = 0;
 
-    public Board(List<String> data){
+    public Board_2(List<String> data){
         board = new Boolean[data.size()][data.get(0).length()];
 
         for(int i = 0; i < data.size(); i++){

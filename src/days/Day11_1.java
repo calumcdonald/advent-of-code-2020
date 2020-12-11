@@ -1,6 +1,6 @@
 package days;
 
-import utils.Board;
+import utils.Board_1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Day11 {
+public class Day11_1 {
 
     private static List<String> data = new ArrayList<>();
 
@@ -21,7 +21,7 @@ public class Day11 {
                 data.add(line);
             }
 
-            Board board = new Board(data);
+            Board_1 board = new Board_1(data);
 
             while(!board.updateBoard());
 
