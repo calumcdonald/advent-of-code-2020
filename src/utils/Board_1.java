@@ -37,90 +37,65 @@ public class Board_1 {
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
                 int occupied = 0;
-                int adjacent = 0;
 
-                if(board[i][j] == null){
+                if(tempBoard[i][j] == null){
                     continue;
                 }
 
                 if(i - 1 >= 0){
                     Boolean n = tempBoard[i - 1][j];
                     if(n != null && n) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(n != null) adjacent++;
                 }
 
                 if(i - 1 >= 0 && j + 1 < board[0].length){
                     Boolean ne = tempBoard[i - 1][j + 1];
                     if(ne != null && ne) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(ne != null) adjacent++;
                 }
 
                 if(j + 1 < board[0].length){
                     Boolean e = tempBoard[i][j + 1];
                     if(e != null && e) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(e != null) adjacent++;
                 }
 
                 if(i + 1 < board.length && j + 1 < board[0].length){
                     Boolean se = tempBoard[i + 1][j + 1];
                     if(se != null && se) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(se != null) adjacent++;
                 }
 
                 if(i + 1 < board.length){
                     Boolean s = tempBoard[i + 1][j];
                     if(s != null && s) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(s != null) adjacent++;
                 }
 
                 if(i + 1 < board.length && j - 1 >= 0){
                     Boolean sw = tempBoard[i + 1][j - 1];
                     if(sw != null && sw) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(sw != null) adjacent++;
                 }
 
                 if(j - 1 >= 0){
                     Boolean w = tempBoard[i][j - 1];
                     if(w != null && w) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(w != null) adjacent++;
                 }
 
                 if(i - 1 >= 0 && j - 1 >= 0){
                     Boolean nw = tempBoard[i - 1][j - 1];
                     if(nw != null && nw) {
-                        adjacent++;
                         occupied++;
                     }
-
-                    else if(nw != null) adjacent++;
                 }
 
 

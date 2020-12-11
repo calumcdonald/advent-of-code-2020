@@ -14,7 +14,7 @@ public class Day11_2 {
 
     public static void main(String[] args) {
         try {
-            File dataInp = new File("data/day11input.txt");
+            File dataInp = new File("data/day11test.txt");
             Scanner sc = new Scanner(dataInp);
             while(sc.hasNextLine()){
                 String line = sc.nextLine();
