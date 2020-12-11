@@ -49,6 +49,9 @@ public class Board_2 {
                             occupied++;
                             break;
                         }
+                        else if(n != null){
+                            break;
+                        }
                     }
                 }
 
@@ -57,6 +60,9 @@ public class Board_2 {
                         Boolean ne = tempBoard[i - k][j + k];
                         if(ne != null && ne){
                             occupied++;
+                            break;
+                        }
+                        else if(ne != null){
                             break;
                         }
                     }
@@ -69,6 +75,9 @@ public class Board_2 {
                             occupied++;
                             break;
                         }
+                        else if(e != null){
+                            break;
+                        }
                     }
                 }
 
@@ -77,6 +86,9 @@ public class Board_2 {
                         Boolean se = tempBoard[i + k][j + k];
                         if(se != null && se){
                             occupied++;
+                            break;
+                        }
+                        else if(se != null ){
                             break;
                         }
                     }
@@ -89,6 +101,9 @@ public class Board_2 {
                             occupied++;
                             break;
                         }
+                        else if(s != null){
+                            break;
+                        }
                     }
                 }
 
@@ -97,6 +112,9 @@ public class Board_2 {
                         Boolean sw = tempBoard[i + k][j - k];
                         if(sw != null && sw){
                             occupied++;
+                            break;
+                        }
+                        else if(sw != null){
                             break;
                         }
                     }
@@ -109,6 +127,9 @@ public class Board_2 {
                             occupied++;
                             break;
                         }
+                        else if(w != null){
+                            break;
+                        }
                     }
                 }
 
@@ -117,6 +138,9 @@ public class Board_2 {
                         Boolean nw = tempBoard[i - k][j - k];
                         if(nw != null && nw){
                             occupied++;
+                            break;
+                        }
+                        else if(nw != null){
                             break;
                         }
                     }
