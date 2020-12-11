@@ -78,12 +78,7 @@ public class Board {
             }
         }
 
-        if(noChange == (board.length * board[0].length)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return noChange == (board.length * board[0].length);
     }
 
     public int getOccupiedSeats(){
@@ -95,7 +90,6 @@ public class Board {
                 }
             }
         }
-
         return result;
     }
 }
