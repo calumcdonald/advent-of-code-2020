@@ -2,7 +2,7 @@ package utils;
 
 import java.util.List;
 
-public class Board_2 {
+public class Board_2{
 
     private Boolean[][] board;
     private int numSeats = 0;
@@ -45,11 +45,8 @@ public class Board_2 {
                 for(int k = 1; k <= i; k++){
                     if(i - k >= 0){
                         Boolean n = tempBoard[i - k][j];
-                        if(n != null && n){
-                            occupied++;
-                            break;
-                        }
-                        else if(n != null){
+                        if(n != null){
+                            if(n) occupied++;
                             break;
                         }
                     }
@@ -58,11 +55,8 @@ public class Board_2 {
                 for(int k = 1; k <= i || k < (board[0].length - j); k++){
                     if(i - k >= 0 && j + k < board[0].length){
                         Boolean ne = tempBoard[i - k][j + k];
-                        if(ne != null && ne){
-                            occupied++;
-                            break;
-                        }
-                        else if(ne != null){
+                        if(ne != null){
+                            if(ne) occupied++;
                             break;
                         }
                     }
@@ -71,11 +65,8 @@ public class Board_2 {
                 for(int k = 1; k < (board[0].length - j); k++){
                     if(j + k < board[0].length){
                         Boolean e = tempBoard[i][j + k];
-                        if(e != null && e){
-                            occupied++;
-                            break;
-                        }
-                        else if(e != null){
+                        if(e != null){
+                            if(e) occupied++;
                             break;
                         }
                     }
@@ -84,11 +75,8 @@ public class Board_2 {
                 for(int k = 1; k < (board.length - i) || k < (board[0].length - j); k++){
                     if(i + k < board.length && j + k < board[0].length){
                         Boolean se = tempBoard[i + k][j + k];
-                        if(se != null && se){
-                            occupied++;
-                            break;
-                        }
-                        else if(se != null ){
+                        if(se != null){
+                            if(se) occupied++;
                             break;
                         }
                     }
@@ -97,11 +85,8 @@ public class Board_2 {
                 for(int k = 1; k < (board.length - i); k++){
                     if(i + k < board.length){
                         Boolean s = tempBoard[i + k][j];
-                        if(s != null && s){
-                            occupied++;
-                            break;
-                        }
-                        else if(s != null){
+                        if(s != null){
+                            if(s) occupied++;
                             break;
                         }
                     }
@@ -110,11 +95,8 @@ public class Board_2 {
                 for(int k = 1; k < (board.length - i) || k <= j; k++){
                     if(i + k < board.length && j - k >= 0){
                         Boolean sw = tempBoard[i + k][j - k];
-                        if(sw != null && sw){
-                            occupied++;
-                            break;
-                        }
-                        else if(sw != null){
+                        if(sw != null){
+                            if(sw) occupied++;
                             break;
                         }
                     }
@@ -123,11 +105,8 @@ public class Board_2 {
                 for(int k = 1; k <= j; k++) {
                     if(j - k >= 0){
                         Boolean w = tempBoard[i][j - k];
-                        if(w != null && w){
-                            occupied++;
-                            break;
-                        }
-                        else if(w != null){
+                        if(w != null){
+                            if(w) occupied++;
                             break;
                         }
                     }
@@ -136,11 +115,8 @@ public class Board_2 {
                 for(int k = 1; k <= i || k <= j; k++){
                     if(i - k >= 0 && j - k >= 0){
                         Boolean nw = tempBoard[i - k][j - k];
-                        if(nw != null && nw){
-                            occupied++;
-                            break;
-                        }
-                        else if(nw != null){
+                        if(nw != null){
+                            if(nw) occupied++;
                             break;
                         }
                     }
@@ -177,6 +153,9 @@ public class Board_2 {
 
     public void printBoard(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("UPDATED");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
                 if(board[i][j] != null && !board[i][j]){
