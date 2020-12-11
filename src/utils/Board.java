@@ -18,69 +18,126 @@ public class Board {
                 }
             }
         }
+
+        System.out.println("board created with " + numSeats + " seats.");
+        printBoard();
     }
 
-    public boolean updateBoard() {
-        int noChange = 0;
+    public boolean updateBoard(){
+        Boolean[][] tempBoard = new Boolean[board.length][board[0].length];
+        int unchangedSeats = 0;
+
+        for(int i = 0; i < board.length; i++){
+            for (int j = 0; j < board[0].length; j++){
+                tempBoard[i][j] = board[i][j];
+            }
+        }
+
 
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
                 int occupied = 0;
+                int adjacent = 0;
 
-                if(i - 1 > 0){
-                    Boolean n = board[i - 1][j];
-                    if(n != null && n) occupied++;
+                if(board[i][j] == null){
+                    continue;
+                }
+
+                if(i - 1 >= 0){
+                    Boolean n = tempBoard[i - 1][j];
+                    if(n != null && n) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(n != null) adjacent++;
                 }
 
                 if(i - 1 >= 0 && j + 1 < board[0].length){
-                    Boolean ne = board[i - 1][j + 1];
-                    if(ne != null && ne) occupied++;
+                    Boolean ne = tempBoard[i - 1][j + 1];
+                    if(ne != null && ne) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(ne != null) adjacent++;
                 }
 
                 if(j + 1 < board[0].length){
-                    Boolean e = board[i][j + 1];
-                    if(e != null && e) occupied++;
+                    Boolean e = tempBoard[i][j + 1];
+                    if(e != null && e) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(e != null) adjacent++;
                 }
 
                 if(i + 1 < board.length && j + 1 < board[0].length){
-                    Boolean se = board[i + 1][j + 1];
-                    if(se != null && se) occupied++;
+                    Boolean se = tempBoard[i + 1][j + 1];
+                    if(se != null && se) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(se != null) adjacent++;
                 }
 
                 if(i + 1 < board.length){
-                    Boolean s = board[i + 1][j];
-                    if(s != null && s) occupied++;
+                    Boolean s = tempBoard[i + 1][j];
+                    if(s != null && s) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(s != null) adjacent++;
                 }
 
                 if(i + 1 < board.length && j - 1 >= 0){
-                    Boolean sw = board[i + 1][j - 1];
-                    if(sw != null && sw) occupied++;
+                    Boolean sw = tempBoard[i + 1][j - 1];
+                    if(sw != null && sw) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(sw != null) adjacent++;
                 }
 
                 if(j - 1 >= 0){
-                    Boolean w = board[i][j - 1];
-                    if(w != null && w) occupied++;
+                    Boolean w = tempBoard[i][j - 1];
+                    if(w != null && w) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(w != null) adjacent++;
                 }
 
                 if(i - 1 >= 0 && j - 1 >= 0){
-                    Boolean nw = board[i - 1][j - 1];
-                    if(nw != null && nw) occupied++;
+                    Boolean nw = tempBoard[i - 1][j - 1];
+                    if(nw != null && nw) {
+                        adjacent++;
+                        occupied++;
+                    }
+
+                    else if(nw != null) adjacent++;
                 }
 
 
-                if(board[i][j] != null && (!board[i][j]) && occupied == 0){
+                if(!tempBoard[i][j] && occupied == 0){
                     board[i][j] = true;
                 }
-                else if(board[i][j] != null && board[i][j] && occupied >= 4){
+                else if(tempBoard[i][j] && occupied >= 4){
                     board[i][j] = false;
                 }
-                else if(board[i][j] != null){
-                    noChange++;
+                else{
+                    unchangedSeats++;
                 }
             }
         }
 
-        return noChange == numSeats;
+        printBoard();
+        return unchangedSeats == numSeats;
     }
 
     public int getOccupiedSeats(){
@@ -96,6 +153,7 @@ public class Board {
     }
 
     public void printBoard(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
                 if(board[i][j] != null && !board[i][j]){
