@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Day12{
+public class Day12_1 {
 
     private static int x = 0;
     private static int y = 0;
@@ -50,28 +50,7 @@ public class Day12{
                 char action = line.charAt(0);
                 int value = Integer.parseInt(line.substring(1));
 
-                new Day12().move(action, value);
-
-                String xPos;
-                if(x > 0){
-                    xPos = "east";
-                }
-                else{
-                    xPos = "west";
-                }
-
-                String yPos;
-                if(y > 0){
-                    yPos = "north";
-                }
-                else{
-                    yPos = "south";
-                }
-
-
-                System.out.println(action + "" + value);
-                System.out.println("facing: " + facing);
-                System.out.println(Math.abs(x) + " " + xPos + ", " + Math.abs(y) + " " + yPos);
+                new Day12_1().move(action, value);
             }
         }
         catch(FileNotFoundException e) {
