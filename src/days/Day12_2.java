@@ -1,7 +1,5 @@
 package days;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -11,8 +9,6 @@ public class Day12_2 {
 
     private static Vector<Integer> ship = new Vector<>();
     private static Vector<Integer> waypoint = new Vector<>();
-    private static char[] compass = {'N', 'E', 'S', 'W'};
-    private static int cIndex = 1;
 
     public void printPositions(){
         int sx, sy;
@@ -60,9 +56,11 @@ public class Day12_2 {
         System.out.println("waypoint: " + Math.abs(wx) + " " + wxPos + ", " + Math.abs(wy) + " " + wyPos);
     }
 
-    public void updateWaypoint(int angle){
-        waypoint.set(0, (int)Math.round((Math.cos(Math.toRadians(angle)) * waypoint.get(0)) - (Math.sin(Math.toRadians(angle)) * waypoint.get(1))));
-        waypoint.set(1, (int)Math.round((Math.sin(Math.toRadians(angle)) * waypoint.get(0)) + (Math.cos(Math.toRadians(angle)) * waypoint.get(1))));
+    public void rotateWaypoint(int angle){
+        int newX = (int)Math.round((Math.cos(Math.toRadians(angle)) * waypoint.get(0)) - (Math.sin(Math.toRadians(angle)) * waypoint.get(1)));
+        int newY = (int)Math.round((Math.sin(Math.toRadians(angle)) * waypoint.get(0)) + (Math.cos(Math.toRadians(angle)) * waypoint.get(1)));
+        waypoint.set(0, newX);
+        waypoint.set(1, newY);
     }
 
     public static void main(String[] args) {
@@ -95,8 +93,10 @@ public class Day12_2 {
                         waypoint.set(0, waypoint.get(0) - value);
                         break;
                     case('L'):
+                        new Day12_2().rotateWaypoint(value);
+                        break;
                     case('R'):
-                        new Day12_2().updateWaypoint(value);
+                        new Day12_2().rotateWaypoint(-value);
                         break;
                     case('F'):
                         for(int i = 0; i < value; i++){
